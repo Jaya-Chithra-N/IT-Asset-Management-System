@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add User - ITAMS</title>
+  <link rel="stylesheet" href="../css/add-user.css">
+</head>
+<body>
+  <h2>User Management</h2>
+  <button onclick="window.location.href='admin-dashboard.html'">Back to Dashboard</button>
+
+  <h3>Create User</h3>
+  <form id="createUserForm">
+    <input type="text" id="newName" placeholder="Name" required>
+    <input type="email" id="newEmail" placeholder="Email" required>
+    <input type="password" id="newPassword" placeholder="Password" required>
+    <select id="newRole">
+      <option value="Admin">Admin</option>
+      <option value="Employee" selected>Employee</option>
+    </select>
+    <input type="text" id="newDept" placeholder="Department">
+    <button type="submit">Create User</button>
+  </form>
+  <div id="usersList"></div>
+
+  <script src="../js/add-user.js"></script>
+</body>
+</html>

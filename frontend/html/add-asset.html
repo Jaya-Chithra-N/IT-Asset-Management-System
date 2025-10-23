@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Asset - ITAMS</title>
+  <link rel="stylesheet" href="../css/add-asset.css">
+</head>
+<body>
+  <h2>Asset Management</h2>
+  <button onclick="window.location.href='admin-dashboard.html'">Back to Dashboard</button>
+
+  <h3>Create Asset</h3>
+  <form id="createAssetForm">
+    <input type="text" id="assetName" placeholder="Asset Name" required>
+    <input type="text" id="assetType" placeholder="Type">
+    <input type="text" id="assetCategory" placeholder="Category">
+    <input type="text" id="assetSerial" placeholder="Serial Number">
+    <input type="date" id="assetPurchase">
+    <input type="date" id="assetWarranty">
+    <select id="assetStatus">
+      <option value="Available" selected>Available</option>
+      <option value="Assigned">Assigned</option>
+      <option value="Maintenance">Maintenance</option>
+    </select>
+    <button type="submit">Add Asset</button>
+  </form>
+  <div id="assetsList"></div>
+
+  <script src="../js/add-asset.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background: #f7f7f7;
+}
+.container {
+  max-width: 400px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+input, select, button {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+}
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+button:hover { background-color: #0056b3; }
+nav button { margin-right: 10px; }
+
+
+
+
+
+#myAssets table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+#myAssets th, #myAssets td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+#myAssets th {
+  background-color: #f2f2f2;
+}
+
+#myAssets button {
+  padding: 4px 8px;
+  cursor: pointer;
+}
+

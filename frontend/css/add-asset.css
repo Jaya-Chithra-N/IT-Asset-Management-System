@@ -1,0 +1,316 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* Container for centering content */
+body {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header styles */
+h2 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #3498db;
+    font-size: 2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+h3 {
+    color: #34495e;
+    margin: 25px 0 15px 0;
+    font-size: 1.5rem;
+}
+
+/* Button styles */
+button {
+    background: linear-gradient(to bottom, #3498db, #2980b9);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(to bottom, #2980b9, #2573a7);
+}
+
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Form styles */
+#createAssetForm {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    align-items: end;
+}
+
+#createAssetForm input,
+#createAssetForm select {
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+}
+
+#createAssetForm input:focus,
+#createAssetForm select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    background-color: white;
+}
+
+#createAssetForm button[type="submit"] {
+    grid-column: 1 / -1;
+    padding: 14px;
+    background: linear-gradient(to bottom, #27ae60, #219a52);
+    font-size: 18px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+#createAssetForm button[type="submit"]:hover {
+    background: linear-gradient(to bottom, #219a52, #1e8449);
+}
+
+/* Assets list styles */
+#assetsList {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.asset-item {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.asset-item:hover {
+    background-color: #f9f9f9;
+}
+
+.asset-item:last-child {
+    border-bottom: none;
+}
+
+.asset-info {
+    flex-grow: 1;
+}
+
+.asset-name {
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.asset-details {
+    color: #7f8c8d;
+    font-size: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.asset-detail {
+    display: flex;
+    align-items: center;
+}
+
+.asset-detail::before {
+    content: "•";
+    margin-right: 5px;
+    color: #3498db;
+}
+
+.asset-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.asset-actions button {
+    margin: 0;
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+.edit-btn {
+    background: linear-gradient(to bottom, #f39c12, #e67e22);
+}
+
+.edit-btn:hover {
+    background: linear-gradient(to bottom, #e67e22, #d35400);
+}
+
+.delete-btn {
+    background: linear-gradient(to bottom, #e74c3c, #c0392b);
+}
+
+.delete-btn:hover {
+    background: linear-gradient(to bottom, #c0392b, #a93226);
+}
+
+/* Status badges */
+.status-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.status-available {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-assigned {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+.status-maintenance {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+    
+    #createAssetForm {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+    
+    .asset-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .asset-actions {
+        margin-top: 15px;
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 1.7rem;
+    }
+    
+    h3 {
+        font-size: 1.3rem;
+    }
+    
+    #createAssetForm {
+        padding: 15px;
+    }
+    
+    .asset-actions {
+        flex-direction: column;
+    }
+    
+    .asset-actions button {
+        width: 100%;
+        margin: 5px 0;
+    }
+    
+    .asset-details {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+/* Loading and status messages */
+.status-message {
+    padding: 12px 15px;
+    margin: 15px 0;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.loading {
+    text-align: center;
+    padding: 30px;
+    color: #7f8c8d;
+}
+
+/* Empty state */
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    color: #7f8c8d;
+}
+
+.empty-state p {
+    margin-top: 10px;
+    font-size: 1.1rem;
+}
+
+/* Form labels (if you add them later) */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c3e50;
+}

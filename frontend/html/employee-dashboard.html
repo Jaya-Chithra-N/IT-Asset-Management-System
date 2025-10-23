@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Dashboard - ITAMS</title>
+  <link rel="stylesheet" href="../css/style.css">
+  
+</head>
+<body>
+  <h2>Employee Dashboard</h2>
+  <button onclick="window.location.href='index.html'; localStorage.clear();">Logout</button>
+  
+  <div id="myAssets">
+    <!-- Assigned assets will be loaded here -->
+     <h3>My Assigned Assets</h3>
+  <table id="myAssetsTable">
+    <thead>
+      <tr>
+        <th>Asset ID</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Category</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Assigned assets will go here -->
+    </tbody>
+  </table>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script>
+    const token = localStorage.getItem('token');
+  if (!token) {
+    alert('You are not logged in!');
+    window.location.href = 'index.html';
+  }
+
+  async function returnAsset(assignment_id) {
+      if (!confirm('Are you sure you want to return this asset?')) return;
+      try {
+        const res = await fetch(`http://localhost:5000/api/assignments/return/${assignment_id}`, {
+          method: 'PUT',
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const data = await res.json();
+        if (res.ok) { alert(data.message); loadMyAssets(); }
+        else alert(data.message);
+      } catch(err) { console.error(err); alert('Error returning asset'); }
+    }
+    async function loadMyAssets() {
+  try {
+    const res = await fetch('http://localhost:5000/api/assignments/my-assets', {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+
+    const assets = await res.json();
+    const tbody = document.querySelector('#myAssetsTable tbody');
+    tbody.innerHTML = ''; // clear previous rows
+
+    if (assets.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="6">No assets assigned</td></tr>`;
+      return;
+    }
+
+    assets.forEach(a => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${a.asset_id}</td>
+        <td>${a.name}</td>
+        <td>${a.type || ''}</td>
+        <td>${a.category || ''}</td>
+        <td>${a.assignment_status}</td>
+        <td>
+          <button onclick="returnAsset(${a.assignment_id})">Return</button>
+        </td>
+      `;
+      tbody.appendChild(row);
+    });
+  } catch (err) {
+    console.error(err);
+    alert('Error loading assets');
+  }
+}
+
+    loadMyAssets();
+</script>
+</body>
+</html>
